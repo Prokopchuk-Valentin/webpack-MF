@@ -11,7 +11,7 @@ export default (env: Enviroment) => {
 
   const config: Configuration = {
     mode: env.mode ?? 'production',
-    entry: resolver('src', 'index.ts'),
+    entry: resolver('src', 'index.tsx'),
 
     module: {
       rules: [
@@ -31,11 +31,11 @@ export default (env: Enviroment) => {
       clean: true,
     },
     plugins: [
-      new webpack.ProgressPlugin(),
+      isDev && new webpack.ProgressPlugin(),
       new HtmlWebpackPlugin({
         template: resolver('public', 'index.html'),
       }),
-    ],
+    ].filter(Boolean),
     devtool: isDev && 'inline-source-map',
     devServer: isDev ? devServer : undefined,
   };
