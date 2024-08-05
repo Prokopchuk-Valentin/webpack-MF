@@ -1,9 +1,8 @@
 /** @format */
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
 import { ModuleOptions } from 'webpack';
-import { BuildOptions } from '../types/types';
+import { BuildOptions } from '../types';
 
 export function buildLoaders({ mode }: BuildOptions): ModuleOptions['rules'] {
   const isDev = mode === 'development';
@@ -19,8 +18,15 @@ export function buildLoaders({ mode }: BuildOptions): ModuleOptions['rules'] {
     },
   };
 
-  const sccsLoader = {
-    test: /\.s[ac]ss$/i,
+  const cssLoader = {
+    loader: 'css-loader',
+    options: {
+      modules: false,
+    },
+  };
+
+  const scssModuleLoader = {
+    test: /\.module\.s[ac]ss$/i,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       cssModuleLoader,
@@ -28,11 +34,30 @@ export function buildLoaders({ mode }: BuildOptions): ModuleOptions['rules'] {
     ],
   };
 
-  const ccsLoader = {
-    test: /\.css$/i,
+  const scssLoader = {
+    test: /\.s[ac]ss$/i,
+    exclude: /\.module\.s[ac]ss$/i,
+    use: [
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+      cssLoader,
+      'sass-loader',
+    ],
+  };
+
+  const cssModuleFileLoader = {
+    test: /\.module\.css$/i,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       cssModuleLoader,
+    ],
+  };
+
+  const cssFileLoader = {
+    test: /\.css$/i,
+    exclude: /\.module\.css$/i,
+    use: [
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+      cssLoader,
     ],
   };
 
@@ -42,5 +67,5 @@ export function buildLoaders({ mode }: BuildOptions): ModuleOptions['rules'] {
     exclude: /node_modules/,
   };
 
-  return [sccsLoader, ccsLoader, tsLoader];
+  return [scssModuleLoader, scssLoader, cssModuleFileLoader, cssFileLoader, tsLoader];
 }

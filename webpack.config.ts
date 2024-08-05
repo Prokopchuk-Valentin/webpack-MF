@@ -1,6 +1,6 @@
 /** @format */
 
-import { Enviroment } from './config/types/types';
+import { Enviroment } from './config/types';
 import { buildWebpack } from './config/build';
 import path from 'path';
 

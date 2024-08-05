@@ -4,7 +4,7 @@ import { Configuration } from 'webpack';
 import { buildPlugins } from './buildPlugins';
 import { buildDevServer } from './buildDevServer';
 import { buildLoaders } from './buildLoaders';
-import { BuildOptions } from '../types/types';
+import { BuildOptions } from '../types';
 import { buildResolvers } from './buildResolvers';
 
 export function buildWebpack(options: BuildOptions): Configuration {

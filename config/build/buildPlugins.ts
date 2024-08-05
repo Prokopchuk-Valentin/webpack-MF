@@ -3,7 +3,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration, ProgressPlugin } from 'webpack';
-import { BuildOptions } from '../types/types';
+import { BuildOptions } from '../types';
 
 export function buildPlugins({ mode, paths: { html } }: BuildOptions) {
   const isDev = mode === 'development';
