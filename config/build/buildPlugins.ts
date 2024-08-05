@@ -5,6 +5,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration, DefinePlugin, ProgressPlugin } from 'webpack';
 import { BuildOptions } from '../types';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 export function buildPlugins({
   mode,
@@ -20,6 +21,7 @@ export function buildPlugins({
     new DefinePlugin({
       __PLATFORM__: JSON.stringify(platform),
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ];
 
   if (isDev) {
