@@ -12,6 +12,7 @@ const App = () => {
       <br />
       <Link to={'/shop'}>shop</Link>
       <br />
+      <h1>PLATFORM: {__PLATFORM__}</h1>
       <Outlet></Outlet>
     </>
   );

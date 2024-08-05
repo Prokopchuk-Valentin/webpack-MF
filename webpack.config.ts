@@ -8,6 +8,7 @@ export default ({
   port = 3000,
   mode = 'development',
   analyzer = false,
+  platform = 'desktop',
 }: Enviroment) => {
   const paths = {
     html: path.resolve(__dirname, 'public', 'index.html'),
@@ -16,5 +17,5 @@ export default ({
     src: path.resolve(__dirname, 'src'),
   };
 
-  return buildWebpack({ port, mode, paths, analyzer });
+  return buildWebpack({ port, mode, paths, analyzer, platform });
 };
