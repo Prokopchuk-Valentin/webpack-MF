@@ -13,6 +13,7 @@ export default ({
     html: path.resolve(__dirname, 'public', 'index.html'),
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: path.resolve(__dirname, 'dist'),
+    src: path.resolve(__dirname, 'src'),
   };
 
   return buildWebpack({ port, mode, paths, analyzer });

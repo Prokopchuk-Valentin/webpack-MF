@@ -9,7 +9,9 @@
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": { "@/*": ["./*"] }
   },
   "extends": "./tsconfig.node.json",
   "include": ["src/**/*"],
