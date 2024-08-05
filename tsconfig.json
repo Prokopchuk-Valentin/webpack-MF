@@ -11,5 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
-  "extends": "./tsconfig.node.json"
+  "extends": "./tsconfig.node.json",
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
